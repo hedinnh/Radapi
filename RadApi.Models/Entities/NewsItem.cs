@@ -1,3 +1,5 @@
+using System;
+
 namespace RadApi.Models.Entities
 {
     public class NewsItem
@@ -7,9 +9,9 @@ namespace RadApi.Models.Entities
         public string ImgSource { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
-        public Date PublishDate { get; set; }
+        public DateTime PublishDate { get; set; }
         public string ModifiedBy { get; set; }
-        public Date CreatedDate { get; set; }
-        public Date ModifiedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
     }
 }

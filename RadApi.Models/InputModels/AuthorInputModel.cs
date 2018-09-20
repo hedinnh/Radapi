@@ -1,8 +1,7 @@
-namespace RadApi.Models.Dtos
+namespace RadApi.Models.InputModels
 {
-    public class AuthorDetailDto
+    public class AuthorInputModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string ProfileImgSource { get; set; }
         public string Bio { get; set; }
