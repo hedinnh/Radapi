@@ -9,7 +9,7 @@ namespace RadApi.Models.Entities
         public string ImgSource { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
-        public DateTime PublishDate { get; set; }
+        public string PublishDate { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
