@@ -8,6 +8,7 @@ using RadApi.Models.Dtos;
 using RadApi.Models.Entities;
 using RadApi.Repositories;
 using RadApi.Services;
+using RadApi.Models.Extensions;
 
 namespace RadApi.WebApi.Controllers
 {
@@ -19,38 +20,42 @@ namespace RadApi.WebApi.Controllers
         private NewsService _newsService = new NewsService();
         
         [HttpGet]
-        public IActionResult GetAllNews(int pageNumber = 1, int pageSize = 10)
+        public IActionResult GetAllNews(int pageNumber = 1, int pageSize = 25)
         {
-
             var envelope = new Envelope<NewsItemDto>();
-            var header = Request.Headers;
-            var result = _newsService.GetAllNews();
-
-
+            double count = 0;
+            // var result = _newsService.GetAllNews(); // skoda ad nota service seinna !!!
             var temp = new List<NewsItemDto>();
  
-            // NewsItemsData.Models.ToLightWeight().ForEach(c =>
-            // {
-            //     c.Links.AddReference("self", $"http://localhost:5000/api/models/{c.Id}");
-            //     temp.Add(c);
-
-            // });
-
-            // IEnumerable result = temp.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            NewsItemsData.Models.ToLightWeight().ForEach(c =>
+            {
+                //c.Links.AddReference("self", $"http://localhost:5000/api/models/{c.Id}");
+                temp.Add(c);
+                count++;
+            });
+            
+            IEnumerable result = temp.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             envelope.Items = result.Cast<NewsItemDto>();
             envelope.PageNumber = pageNumber;
             envelope.PageSize = pageSize;
-            //envelope.MaxPages = (int)Math.Ceiling(count/pageSize);
-
-            return Ok(result);
+            envelope.MaxPages = (int)Math.Ceiling(count/pageSize);
+            return Ok(envelope);
         }
 
         // GET api/values/5
-        //[Route("api/values")]
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet]
+        [Route("{id:int}")]
+        public ActionResult<string> GetNewsById(int id)
         {
-            return "value";
+            var result = new List<NewsItemDetailDto>();
+            NewsItemsData.Models.ToDetails().ForEach(c =>
+            {
+                if(c.Id == id){
+                    //c.Links.AddReference("self",$"http://localhost:5000/api/models/{c.Id}");
+                    result.Add(c);
+                }
+            });
+            return Ok(result);
         }
 
         // POST api/values

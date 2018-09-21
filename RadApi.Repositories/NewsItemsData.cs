@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RadApi.Models.Entities;
 
@@ -231,6 +232,15 @@ namespace RadApi.Repositories
                 ImgSource = "http://dummyimage.com/154x136.jpg/5fa2dd/ffffff",
                 ShortDescription = "Inj unsp musc/fasc/tend",
                 LongDescription = "Other injury of unspecified muscles, fascia and tendons at forearm level, left arm, initial encounter",
+                PublishDate = "2016/12/27, 09:12:04"
+            },
+             new NewsItem
+            {
+                Id = 26,
+                Title = "Ice Age: A Mammoth Version 2",
+                ImgSource = "http://dummyimage.com/154x136.jpg/5fa2dd/ffffff",
+                ShortDescription = "super duper short desc",
+                LongDescription = "Super duper long desc, Super duper long desc, Super duper long desc, Super duper long desc, ",
                 PublishDate = "2016/12/27, 09:12:04"
             }
         };

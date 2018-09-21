@@ -9,6 +9,6 @@ namespace RadApi.Models.Dtos
         public string ImgSource { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
-        public DateTime PublishDate { get; set; }
+        public string PublishDate { get; set; } //Mayby change to daytime!
     }
 }

@@ -11,7 +11,6 @@ namespace RadApi.Services
         public IEnumerable<NewsItem> GetAllNews()
         {
             return NewsItemsData.Models;
-            
         }
 
     }
