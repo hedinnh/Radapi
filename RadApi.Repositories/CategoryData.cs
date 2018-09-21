@@ -5,7 +5,7 @@ namespace RadApi.Repositories
 {
     public class CategoryData
     {
-        private static List<Category> _models = new List<Category>
+        private List<Category> _models = new List<Category>
         {
             new Category
             {
@@ -26,6 +26,6 @@ namespace RadApi.Repositories
                 Slug = "weather"
             }
         };
-        public static List<Category> Models { get => _models; set => _models = value; }
+        public List<Category> Models { get => _models; set => _models = value; }
     }
 }

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using RadApi.Models.Entities;
 
-namespace template.Data
+namespace RadApi.Repositories
 {
-    public static class DataContext
+    public class NewsItemsData
     {
         private static List<NewsItem> _models = new List<NewsItem>
         {

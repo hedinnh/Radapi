@@ -1,0 +1,12 @@
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\bin\Debug\netstandard2.0\RadApi.Repositories.deps.json
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\bin\Debug\netstandard2.0\RadApi.Repositories.dll
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\bin\Debug\netstandard2.0\RadApi.Repositories.pdb
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\bin\Debug\netstandard2.0\RadApi.Models.dll
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\bin\Debug\netstandard2.0\RadApi.Models.pdb
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\obj\Debug\netstandard2.0\RadApi.Repositories.csprojAssemblyReference.cache
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\obj\Debug\netstandard2.0\RadApi.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\obj\Debug\netstandard2.0\RadApi.Repositories.AssemblyInfoInputs.cache
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\obj\Debug\netstandard2.0\RadApi.Repositories.AssemblyInfo.cs
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\obj\Debug\netstandard2.0\RadApi.Repositories.csproj.CopyComplete
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\obj\Debug\netstandard2.0\RadApi.Repositories.dll
+C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Repositories\obj\Debug\netstandard2.0\RadApi.Repositories.pdb

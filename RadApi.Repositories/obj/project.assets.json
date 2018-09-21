@@ -25,6 +25,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "RadApi.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/RadApi.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RadApi.Models.dll": {}
+        }
       }
     }
   },
@@ -168,11 +178,17 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "RadApi.Models/1.0.0": {
+      "type": "project",
+      "path": "../RadApi.Models/RadApi.Models.csproj",
+      "msbuildProject": "../RadApi.Models/RadApi.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.3",
+      "RadApi.Models >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -204,7 +220,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
+              "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

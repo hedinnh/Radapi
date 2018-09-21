@@ -25,6 +25,29 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "RadApi.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/RadApi.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RadApi.Models.dll": {}
+        }
+      },
+      "RadApi.Repositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "RadApi.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RadApi.Repositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RadApi.Repositories.dll": {}
+        }
       }
     }
   },
@@ -168,11 +191,23 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "RadApi.Models/1.0.0": {
+      "type": "project",
+      "path": "../RadApi.Models/RadApi.Models.csproj",
+      "msbuildProject": "../RadApi.Models/RadApi.Models.csproj"
+    },
+    "RadApi.Repositories/1.0.0": {
+      "type": "project",
+      "path": "../RadApi.Repositories/RadApi.Repositories.csproj",
+      "msbuildProject": "../RadApi.Repositories/RadApi.Repositories.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.3",
+      "RadApi.Models >= 1.0.0",
+      "RadApi.Repositories >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -204,7 +239,14 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
+              "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
+            },
+            "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj": {
+              "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
