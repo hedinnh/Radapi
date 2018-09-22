@@ -7,14 +7,14 @@ namespace RadApi.Models.Extensions
 {
     public static class ListExtensions
     {
-        public static List<NewsItemDto> ToLightWeight(this List<NewsItem> list, string language = "en-US") => list.Select(item => new NewsItemDto
+        public static List<NewsItemDto> ToLightWeight(this List<NewsItem> list) => list.Select(item => new NewsItemDto
         {
             Id = item.Id,
             Title = item.Title,
             ImgSource = item.ImgSource,
             ShortDescription = item.ShortDescription
         }).ToList();
-        public static List<NewsItemDetailDto> ToDetails(this List<NewsItem> list, string language = "en-US") => list.Select(item => new NewsItemDetailDto
+        public static List<NewsItemDetailDto> ToDetails(this List<NewsItem> list) => list.Select(item => new NewsItemDetailDto
         {
             Id = item.Id,
             Title = item.Title,
@@ -27,11 +27,23 @@ namespace RadApi.Models.Extensions
             // YearOfRelease = item.YearOfRelease,
             // ImageUrl = item.ImageUrl
         }).ToList();
-        public static List<CategoryDto> CategoryToLightWeight(this List<Category> list, string language = "en-US") => list.Select(item => new CategoryDto
+        public static List<CategoryDto> CategoryToLightWeight(this List<Category> list) => list.Select(item => new CategoryDto
         {
             Id = item.Id,
             Name = item.Name,
             Slug = item.Slug
+        }).ToList();
+        public static List<AuthorDto> AuthorToLightWeight(this List<Author> list) => list.Select(item => new AuthorDto
+        {
+            Id = item.Id,
+            Name = item.Name
+        }).ToList();
+        public static List<AuthorDetailDto> AuthorToDetails(this List<Author> list) => list.Select(item => new AuthorDetailDto
+        {
+            Id = item.Id,
+            Name = item.Name,
+            ProfileImgSource = item.ProfileImgSource,
+            Bio = item.Bio
         }).ToList();
     }
 }
