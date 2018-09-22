@@ -1,6 +1,8 @@
+using RadApi.Models.Extensions;
+
 namespace RadApi.Models.Dtos 
 {
-    public class CategoryDetailDto
+    public class CategoryDetailDto : HyperMediaModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

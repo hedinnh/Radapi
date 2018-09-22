@@ -26,6 +26,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
+          "Newtonsoft.Json": "11.0.2",
           "RadApi.Models": "1.0.0",
           "RadApi.Services": "1.0.0"
         },
@@ -208,6 +209,9 @@
         }
       },
       "RadApi.Models/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
         "runtime": {
           "RadApi.Models.dll": {}
         },

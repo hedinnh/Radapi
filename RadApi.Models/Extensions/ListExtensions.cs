@@ -27,5 +27,11 @@ namespace RadApi.Models.Extensions
             // YearOfRelease = item.YearOfRelease,
             // ImageUrl = item.ImageUrl
         }).ToList();
+        public static List<CategoryDto> CategoryToLightWeight(this List<Category> list, string language = "en-US") => list.Select(item => new CategoryDto
+        {
+            Id = item.Id,
+            Name = item.Name,
+            Slug = item.Slug
+        }).ToList();
     }
 }

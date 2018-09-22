@@ -5,8 +5,8 @@ namespace RadApi.Repositories
 {
     public class AuthorData
     {
-               private List<Author> _models = new List<Author>
-        {
+            private static List<Author> _models = new List<Author>
+            {
             new Author
             {
                 Id = 1,
@@ -31,6 +31,6 @@ namespace RadApi.Repositories
                 Bio = "My name is gardens and i will water your flower for free wrarrrr"
             }
         };
-        public List<Author> Models { get => _models; set => _models = value; }
+        public static List<Author> Models { get => _models; set => _models = value; }
     }
 }
