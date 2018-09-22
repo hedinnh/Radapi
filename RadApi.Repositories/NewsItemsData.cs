@@ -79,7 +79,7 @@ namespace RadApi.Repositories
                 ImgSource = "http://dummyimage.com/243x188.bmp/5fa2dd/ffffff",
                 ShortDescription = "Breakdown (mechanical) of aortic",
                 LongDescription = "Breakdown (mechanical) of aortic (bifurcation) graft (replacement), subsequent encounter subsequent encounter subsequent encounter",
-                PublishDate = new DateTime(20011, 9, 22, 14, 30, 0)
+                PublishDate = new DateTime(2011, 9, 22, 14, 30, 0)
             },
             new NewsItem
             {

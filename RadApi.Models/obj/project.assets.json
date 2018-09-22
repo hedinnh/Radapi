@@ -182,24 +182,22 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj",
+      "projectUniqueName": "e:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj",
       "projectName": "RadApi.Models",
-      "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj",
+      "projectPath": "e:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj",
       "packagesPath": "C:\\Users\\Jenni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\obj\\",
+      "outputPath": "e:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jenni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Jenni\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

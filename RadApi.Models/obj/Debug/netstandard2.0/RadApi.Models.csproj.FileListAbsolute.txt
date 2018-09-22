@@ -7,3 +7,12 @@ C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\D
 C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.AssemblyInfo.cs
 C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.dll
 C:\Users\Jenni\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.pdb
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\bin\Debug\netstandard2.0\RadApi.Models.deps.json
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\bin\Debug\netstandard2.0\RadApi.Models.dll
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\bin\Debug\netstandard2.0\RadApi.Models.pdb
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.csprojAssemblyReference.cache
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.csproj.CoreCompileInputs.cache
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.AssemblyInfoInputs.cache
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.AssemblyInfo.cs
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.dll
+E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.pdb
