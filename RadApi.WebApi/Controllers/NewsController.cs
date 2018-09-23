@@ -34,11 +34,14 @@ namespace RadApi.WebApi.Controllers
             var sorted = NewsItemsData.Models.OrderBy(p => p.PublishDate).ToList(); // Sort news items by date
             sorted.ToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", new {href=$"api/{c.Id}"});
+                c.Links.AddReference("self", new { href = $"api/{c.Id}" });
+                c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
+                c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
+                c.Links.AddReference("authors", new [] { new {href = $"api/{c.Id}"} });
                 temp.Add(c);
                 count++;
             });
-
+            
             IEnumerable result = temp.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             envelope.Items = result.Cast<NewsItemDto>();
             envelope.PageNumber = pageNumber;
@@ -56,9 +59,9 @@ namespace RadApi.WebApi.Controllers
             {
                 if (c.Id == id)
                 {
-                    c.Links.AddReference("self",new {href= $"api/{c.Id}"});
-                    c.Links.AddReference("edit", new {href= $"api/{c.Id}"});
-                    c.Links.AddReference("delete", new {href= $"api/{c.Id}"});
+                    c.Links.AddReference("self", new { href = $"api/{c.Id}" });
+                    c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
+                    c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
                     result.Add(c);
                 }
             });
@@ -72,9 +75,9 @@ namespace RadApi.WebApi.Controllers
             var categories = CategoryData.Models;
             categories.CategoryToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", new {href=$"api/categories/{c.Id}"});
-                c.Links.AddReference("edit", new {href=$"api/categories/{c.Id}"});
-                c.Links.AddReference("delete", new {href=$"api/categories/{c.Id}"});
+                c.Links.AddReference("self", new { href = $"api/categories/{c.Id}" });
+                c.Links.AddReference("edit", new { href = $"api/categories/{c.Id}" });
+                c.Links.AddReference("delete", new { href = $"api/categories/{c.Id}" });
                 temp.Add(c);
             });
 
@@ -98,11 +101,11 @@ namespace RadApi.WebApi.Controllers
             {
                 if (c.Id == id)
                 {
-                    c.Links.AddReference("self", new {href= $"api/categories/{c.Id}"});
-                    c.Links.AddReference("edit", new {href= $"api/categories/{c.Id}"});
-                    c.Links.AddReference("delete", new {href= $"api/categories/{c.Id}"});
+                    c.Links.AddReference("self", new { href = $"api/categories/{c.Id}" });
+                    c.Links.AddReference("edit", new { href = $"api/categories/{c.Id}" });
+                    c.Links.AddReference("delete", new { href = $"api/categories/{c.Id}" });
                     c.Links.AddReference("numberOfNewsItems", $"{count}");
-                    c.Links.AddReference("parentCateoryId", $"{c.Id - 1}"); // spurning hvort þetta sé rétt ?
+                    c.Links.AddReference("parentCateoryId", $"{c.Id - 1}");
                     temp.Add(c);
                 }
             });
@@ -118,10 +121,10 @@ namespace RadApi.WebApi.Controllers
 
             authors.AuthorToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", new {href= $"api/authors/{c.Id}"});
-                c.Links.AddReference("edit", new {href= $"api/authors/{c.Id}"});
-                c.Links.AddReference("delete", new {href=$"api/authors/{c.Id}"});
-                c.Links.AddReference("newsItems", new {href=$"api/authors/{c.Id}/newsItems"});
+                c.Links.AddReference("self", new { href = $"api/authors/{c.Id}" });
+                c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
+                c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
+                c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
                 // c.Links.AddReference("newsItemsDetailed", $"api/authors/{c.Id}");
                 temp.Add(c);
             }
@@ -139,10 +142,10 @@ namespace RadApi.WebApi.Controllers
             {
                 if (c.Id == id)
                 {
-                    c.Links.AddReference("self", new {href= $"api/authors/{c.Id}"});
-                    c.Links.AddReference("edit", new {href=$"api/authors/{c.Id}"});
-                    c.Links.AddReference("delete", new {href=$"api/authors/{c.Id}"});
-                    c.Links.AddReference("newsItems", new {href=$"api/authors/{c.Id}/newsItems"});
+                    c.Links.AddReference("self", new { href = $"api/authors/{c.Id}" });
+                    c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
+                    c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
+                    c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
                     // c.Links.AddReference("newsItemsDetailed", $"api/authors/{c.Id}");
                     temp.Add(c);
                 }
@@ -169,23 +172,23 @@ namespace RadApi.WebApi.Controllers
             var temp = new List<NewsItemDto>();
             tempNews.ToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", new {href=$"api/{c.Id}"});
-                c.Links.AddReference("edit", new {href=$"api/{c.Id}"});
-                c.Links.AddReference("delete", new {href=$"api/{c.Id}"});
-                c.Links.AddReference("authors", new {href=$"api/authors/{id}"});
+                c.Links.AddReference("self", new { href = $"api/{c.Id}" });
+                c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
+                c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
+                c.Links.AddReference("authors", new { href = $"api/authors/{id}" });
                 // vantar categLories her :D
                 temp.Add(c);
             }
             );
             return Ok(temp);
         }
-        
+
         [HttpPost]
         [Route("")]
         public IActionResult CreateNews(NewsItemInputModel newsItemInput)
         {
             string authHeader = Request.Headers["Authorization"];
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
@@ -232,7 +235,7 @@ namespace RadApi.WebApi.Controllers
 
 
         [HttpDelete("{id:int}")]
-        public IActionResult DeleteNewsItem(int id)
+        public IActionResult DeleteNewsItemById(int id)
         {
             string authHeader = Request.Headers["Authorization"];
             if (secretKey != authHeader)
@@ -247,7 +250,7 @@ namespace RadApi.WebApi.Controllers
         public IActionResult AddCategory(CategoryInputModel newCategory)
         {
             string authHeader = Request.Headers["Authorization"];
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
@@ -265,18 +268,17 @@ namespace RadApi.WebApi.Controllers
             tempCategory.Slug = test;
             tempCategory.ModifiedBy = "Admin";
             tempCategory.ModifiedDate = DateTime.Now;
-            tempCategory.ParentCategoryId = CategoryData.Models.Count();
+            tempCategory.ParentCategoryId = CategoryData.Models.Count(); // ath piazza
             CategoryData.Models.Add(tempCategory);
             return Ok();
         }
-        // jon, athuga hvort thad se haegt ad bua til fall sem checkar a thessu authHeader og modelstate efst. ljott ad thetta se i hverju einasta falli
-        // til ad testa thetta tharf ad senda authentication header med postman sem inniheldur secret key sem er defined efst i thessu skjali.
+
         [HttpPatch]
         [Route("/api/categories/{id:int}")]
-        public IActionResult UpdateCategory(CategoryInputModel categoryUpdate, int id) 
+        public IActionResult UpdateCategory(CategoryInputModel categoryUpdate, int id)
         {
             string authHeader = Request.Headers["Authorization"];
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
@@ -285,7 +287,7 @@ namespace RadApi.WebApi.Controllers
                 return Unauthorized();
             };
             var updateItem = CategoryData.Models.FirstOrDefault(c => c.Id == id);
-            if (categoryUpdate == null) { return BadRequest(categoryUpdate); /* throw something here later*/ }
+            if (categoryUpdate == null) { return BadRequest(categoryUpdate); }
             updateItem.Name = categoryUpdate.Name;
             updateItem.ModifiedBy = "admin";
             updateItem.ModifiedDate = DateTime.Now;
@@ -294,7 +296,33 @@ namespace RadApi.WebApi.Controllers
             var test = Regex.Replace(slug, @"\s", "-", RegexOptions.Compiled);
             updateItem.Slug = test;
             return Ok();
+        }
+        [HttpDelete("{id:int}")]
+        [Route("/api/categories/{id:int}")]
+        public IActionResult DeleteCategoryById(int id)
+        {
+            string authHeader = Request.Headers["Authorization"];
+            if (secretKey != authHeader)
+            {
+                return Unauthorized();
+            };
+            CategoryData.Models.Remove(CategoryData.Models.First(note => note.Id == id));
+            return Ok();
+        }
 
+        // fix , all items can have multiple categories
+        [HttpPatch("{id:int}")]
+        [Route("/api/categories/{catId:int}/newsItems/{id:int}")]
+        public IActionResult ChangeCategory(int newCategory, int id)
+        {
+            string authHeader = Request.Headers["Authorization"];
+            if (secretKey != authHeader)
+            {
+                return Unauthorized();
+            };
+            var newsToChange = NewsItemsData.Models.First(c => c.Id == id);
+            newsToChange.CategoryId = id;
+            return Ok();
         }
     }
 }

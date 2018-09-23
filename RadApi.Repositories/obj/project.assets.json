@@ -232,23 +232,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jonsi\\.nuget\\packages\\": {},
+    "C:\\Users\\Jenni\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
+      "projectUniqueName": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
       "projectName": "RadApi.Repositories",
-      "projectPath": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
-      "packagesPath": "C:\\Users\\Jonsi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Repositories\\obj\\",
+      "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
+      "packagesPath": "C:\\Users\\Jenni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jonsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jenni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -261,8 +261,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
-              "projectPath": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
+            "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
+              "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
             }
           }
         }
