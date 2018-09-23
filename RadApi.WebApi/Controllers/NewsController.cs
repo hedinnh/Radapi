@@ -34,7 +34,7 @@ namespace RadApi.WebApi.Controllers
             var sorted = NewsItemsData.Models.OrderBy(p => p.PublishDate).ToList(); // Sort news items by date
             sorted.ToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", $"api/{c.Id}");
+                c.Links.AddReference("self", new {href=$"api/{c.Id}"});
                 temp.Add(c);
                 count++;
             });
@@ -56,9 +56,9 @@ namespace RadApi.WebApi.Controllers
             {
                 if (c.Id == id)
                 {
-                    c.Links.AddReference("self", $"href:api/{c.Id}");
-                    c.Links.AddReference("edit", $"api/{c.Id}");
-                    c.Links.AddReference("delete", $"api/{c.Id}");
+                    c.Links.AddReference("self",new {href= $"api/{c.Id}"});
+                    c.Links.AddReference("edit", new {href= $"api/{c.Id}"});
+                    c.Links.AddReference("delete", new {href= $"api/{c.Id}"});
                     result.Add(c);
                 }
             });
@@ -72,9 +72,9 @@ namespace RadApi.WebApi.Controllers
             var categories = CategoryData.Models;
             categories.CategoryToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", $"api/categories/{c.Id}");
-                c.Links.AddReference("edit", $"api/categories/{c.Id}");
-                c.Links.AddReference("delete", $"api/categories/{c.Id}");
+                c.Links.AddReference("self", new {href=$"api/categories/{c.Id}"});
+                c.Links.AddReference("edit", new {href=$"api/categories/{c.Id}"});
+                c.Links.AddReference("delete", new {href=$"api/categories/{c.Id}"});
                 temp.Add(c);
             });
 
@@ -98,9 +98,9 @@ namespace RadApi.WebApi.Controllers
             {
                 if (c.Id == id)
                 {
-                    c.Links.AddReference("self", $"api/categories/{c.Id}");
-                    c.Links.AddReference("edit", $"api/categories/{c.Id}");
-                    c.Links.AddReference("delete", $"api/categories/{c.Id}");
+                    c.Links.AddReference("self", new {href= $"api/categories/{c.Id}"});
+                    c.Links.AddReference("edit", new {href= $"api/categories/{c.Id}"});
+                    c.Links.AddReference("delete", new {href= $"api/categories/{c.Id}"});
                     c.Links.AddReference("numberOfNewsItems", $"{count}");
                     c.Links.AddReference("parentCateoryId", $"{c.Id - 1}"); // spurning hvort þetta sé rétt ?
                     temp.Add(c);
@@ -118,10 +118,10 @@ namespace RadApi.WebApi.Controllers
 
             authors.AuthorToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", $"api/authors/{c.Id}");
-                c.Links.AddReference("edit", $"api/authors/{c.Id}");
-                c.Links.AddReference("delete", $"api/authors/{c.Id}");
-                c.Links.AddReference("newsItems", $"api/authors/{c.Id}/newsItems");
+                c.Links.AddReference("self", new {href= $"api/authors/{c.Id}"});
+                c.Links.AddReference("edit", new {href= $"api/authors/{c.Id}"});
+                c.Links.AddReference("delete", new {href=$"api/authors/{c.Id}"});
+                c.Links.AddReference("newsItems", new {href=$"api/authors/{c.Id}/newsItems"});
                 // c.Links.AddReference("newsItemsDetailed", $"api/authors/{c.Id}");
                 temp.Add(c);
             }
@@ -139,10 +139,10 @@ namespace RadApi.WebApi.Controllers
             {
                 if (c.Id == id)
                 {
-                    c.Links.AddReference("self", $"api/authors/{c.Id}");
-                    c.Links.AddReference("edit", $"api/authors/{c.Id}");
-                    c.Links.AddReference("delete", $"api/authors/{c.Id}");
-                    c.Links.AddReference("newsItems", $"api/authors/{c.Id}/newsItems");
+                    c.Links.AddReference("self", new {href= $"api/authors/{c.Id}"});
+                    c.Links.AddReference("edit", new {href=$"api/authors/{c.Id}"});
+                    c.Links.AddReference("delete", new {href=$"api/authors/{c.Id}"});
+                    c.Links.AddReference("newsItems", new {href=$"api/authors/{c.Id}/newsItems"});
                     // c.Links.AddReference("newsItemsDetailed", $"api/authors/{c.Id}");
                     temp.Add(c);
                 }
@@ -169,10 +169,10 @@ namespace RadApi.WebApi.Controllers
             var temp = new List<NewsItemDto>();
             tempNews.ToLightWeight().ForEach(c =>
             {
-                c.Links.AddReference("self", $"api/{c.Id}");
-                c.Links.AddReference("edit", $"api/{c.Id}");
-                c.Links.AddReference("delete", $"api/{c.Id}");
-                c.Links.AddReference("authors", $"api/authors/{id}");
+                c.Links.AddReference("self", new {href=$"api/{c.Id}"});
+                c.Links.AddReference("edit", new {href=$"api/{c.Id}"});
+                c.Links.AddReference("delete", new {href=$"api/{c.Id}"});
+                c.Links.AddReference("authors", new {href=$"api/authors/{id}"});
                 // vantar categLories her :D
                 temp.Add(c);
             }

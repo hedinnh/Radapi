@@ -26,3 +26,17 @@ E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Services\obj\Debug\netst
 E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.csproj.CopyComplete
 E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.dll
 E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.pdb
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\bin\Debug\netstandard2.0\RadApi.Services.deps.json
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\bin\Debug\netstandard2.0\RadApi.Services.dll
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\bin\Debug\netstandard2.0\RadApi.Services.pdb
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\bin\Debug\netstandard2.0\RadApi.Models.dll
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\bin\Debug\netstandard2.0\RadApi.Repositories.dll
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\bin\Debug\netstandard2.0\RadApi.Models.pdb
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\bin\Debug\netstandard2.0\RadApi.Repositories.pdb
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.csprojAssemblyReference.cache
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.csproj.CoreCompileInputs.cache
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.AssemblyInfoInputs.cache
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.AssemblyInfo.cs
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.csproj.CopyComplete
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.dll
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Services\obj\Debug\netstandard2.0\RadApi.Services.pdb

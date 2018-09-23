@@ -6737,7 +6737,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "TT+QCi9LcxGTjBssH7S7n5+8DVcwfG4DYgXX7Dk7+BfZ4oVHj8Q0CbYk9glzAlHLsSt3bYzol+fOdra2iu6GOw==",
+      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -11558,38 +11558,40 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jenni\\.nuget\\packages\\": {},
+    "C:\\Users\\Jonsi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.WebApi\\RadApi.WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.WebApi\\RadApi.WebApi.csproj",
       "projectName": "RadApi.WebApi",
-      "projectPath": "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.WebApi\\RadApi.WebApi.csproj",
-      "packagesPath": "C:\\Users\\Jenni\\.nuget\\packages\\",
-      "outputPath": "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.WebApi\\obj\\",
+      "projectPath": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.WebApi\\RadApi.WebApi.csproj",
+      "packagesPath": "C:\\Users\\Jonsi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jenni\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Jonsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
-              "projectPath": "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
+            "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
+              "projectPath": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
             },
-            "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Services\\RadApi.Services.csproj": {
-              "projectPath": "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Services\\RadApi.Services.csproj"
+            "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Services\\RadApi.Services.csproj": {
+              "projectPath": "C:\\Users\\Jonsi\\Documents\\GitHub\\Radapi\\RadApi.Services\\RadApi.Services.csproj"
             }
           }
         }

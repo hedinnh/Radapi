@@ -16,3 +16,12 @@ E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstan
 E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.AssemblyInfo.cs
 E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.dll
 E:\Dropbox\school\VEFT\Large_Assignments1\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.pdb
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\bin\Debug\netstandard2.0\RadApi.Models.deps.json
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\bin\Debug\netstandard2.0\RadApi.Models.dll
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\bin\Debug\netstandard2.0\RadApi.Models.pdb
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.csprojAssemblyReference.cache
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.csproj.CoreCompileInputs.cache
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.AssemblyInfoInputs.cache
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.AssemblyInfo.cs
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.dll
+C:\Users\Jonsi\Documents\GitHub\Radapi\RadApi.Models\obj\Debug\netstandard2.0\RadApi.Models.pdb
