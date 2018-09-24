@@ -37,5 +37,9 @@ namespace RadApi.Services
         {
             return _newsRepository.GetAuthorById(id);
         }
+        public IEnumerable<NewsItemDto> GetNewsByAuthorId(int id)
+        {
+            return _newsRepository.GetNewsByAuthorId(id);
+        }
     }
 }
