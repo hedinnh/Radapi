@@ -116,8 +116,6 @@ namespace RadApi.Repositories
         }
         public IEnumerable<NewsItemDto> GetNewsByAuthorId(int id)
         {
-            var news = NewsItemsData.Models;
-
             var tempNews = new List<NewsItem>();
             news.ForEach(c =>
             {
@@ -128,13 +126,12 @@ namespace RadApi.Repositories
             }
             );
             var temp = new List<NewsItemDto>();
-            tempNews.ToLightWeight().ForEach(c =>
+            NewsItemsData.Models.ToLightWeight().ForEach(c =>
             {
                 c.Links.AddReference("self", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("authors", new { href = $"api/authors/{id}" });
-                // vantar categLories her :D
                 temp.Add(c);
             }
             );
