@@ -17,8 +17,7 @@ namespace RadApi.Models.InputModels
         [MinLength(50)]
         [MaxLength(255)]
         public string LongDescription { get; set; }
-        public int AuthorId {get; set;}
-        public int CategoryId { get; set; }
+
         [Required]
         public DateTime PublishDate { get; set; }
     }

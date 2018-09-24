@@ -499,29 +499,31 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
+      "projectUniqueName": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
       "projectName": "RadApi.Repositories",
-      "projectPath": "e:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
+      "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\RadApi.Repositories.csproj",
       "packagesPath": "C:\\Users\\Jenni\\.nuget\\packages\\",
-      "outputPath": "e:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\obj\\",
+      "outputPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jenni\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Jenni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
-              "projectPath": "E:\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
+            "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj": {
+              "projectPath": "C:\\Users\\Jenni\\Dropbox\\school\\VEFT\\Large_Assignments1\\Radapi\\RadApi.Models\\RadApi.Models.csproj"
             }
           }
         }

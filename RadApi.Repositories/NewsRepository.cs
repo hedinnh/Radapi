@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using RadApi.Models.Dtos;
 using RadApi.Models.Entities;
 using RadApi.Models.Extensions;
+using RadApi.Models.InputModels;
 using RadApi.Repositories.Data;
 
 namespace RadApi.Repositories
@@ -90,7 +93,6 @@ namespace RadApi.Repositories
                 c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
                 c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
                 c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
-                //c.Links.AddReference("ee",new [] { $"ewrwr{JsonConvert.SerializeObject(obj)}"});
                 temp.Add(c);
             }
             );
@@ -107,7 +109,6 @@ namespace RadApi.Repositories
                     c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
                     c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
                     c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
-                    // c.Links.AddReference("newsItemsDetailed", $"api/authors/{c.Id}");
                     temp.Add(c);
                 }
             }
@@ -119,14 +120,12 @@ namespace RadApi.Repositories
             var tempNews = new List<NewsItem>();
             NewsItemsData.Models.ForEach(c =>
             {
-                if (c.AuthorId == id)
-                {
-                    tempNews.Add(c);
-                }
+                if (c.AuthorId == id) { tempNews.Add(c); }
             }
             );
+            tempNews.Cast<NewsItemDto>();
             var temp = new List<NewsItemDto>();
-            NewsItemsData.Models.ToLightWeight().ForEach(c =>
+            tempNews.ToLightWeight().ForEach(c =>
             {
                 c.Links.AddReference("self", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
@@ -136,6 +135,110 @@ namespace RadApi.Repositories
             }
             );
             return temp;
+        }
+        public int CreateNews(NewsItemInputModel newsItemInput)
+        {
+            var newItem = new NewsItem();
+            var nextId = NewsItemsData.Models.Count() + 1;
+            newItem.Id = nextId;
+            newItem.Title = newsItemInput.Title;
+            newItem.ImgSource = newsItemInput.ImgSource;
+            newItem.ShortDescription = newsItemInput.ShortDescription;
+            newItem.LongDescription = newsItemInput.LongDescription;
+            newItem.PublishDate = newsItemInput.PublishDate;
+            newItem.CreatedDate = DateTime.Now;
+            newItem.ModifiedBy = null;
+            newItem.ModifiedDate = DateTime.Now;
+            NewsItemsData.Models.Add(newItem);
+            return nextId;
+        }
+
+        public void UpdateNewsById(NewsItemInputModel newsItemInput, int id)
+        {
+
+            var updateItem = NewsItemsData.Models.FirstOrDefault(c => c.Id == id);
+            if (updateItem == null) { return; throw new Exception($"Can not be null"); }
+            updateItem.Title = newsItemInput.Title;
+            updateItem.ImgSource = newsItemInput.ImgSource;
+            updateItem.ShortDescription = newsItemInput.ShortDescription;
+            updateItem.LongDescription = newsItemInput.LongDescription;
+            updateItem.ModifiedDate = DateTime.Now;
+            updateItem.ModifiedBy = "admin";
+        }
+        public void DeleteNewsItemById(int id)
+        {
+            NewsItemsData.Models.Remove(NewsItemsData.Models.First(n => n.Id == id));
+        }
+        public int AddCategory(CategoryInputModel newCategory)
+        {
+            var tempCategory = new Category();
+            var nextId = CategoryData.Models.Count() + 1;
+            tempCategory.Id = nextId;
+            tempCategory.Name = newCategory.Name;
+            // Create slug
+            string slug = newCategory.Name.ToLower();
+            var test = Regex.Replace(slug, @"\s", "-", RegexOptions.Compiled);
+            tempCategory.Slug = test;
+            tempCategory.ModifiedBy = "Admin";
+            tempCategory.ModifiedDate = DateTime.Now;
+            tempCategory.ParentCategoryId = CategoryData.Models.Count();
+            CategoryData.Models.Add(tempCategory);
+            return nextId;
+        }
+        public void UpdateCategoryById(CategoryInputModel categoryUpdate, int id)
+        {
+            var updateItem = CategoryData.Models.FirstOrDefault(c => c.Id == id);
+            if (updateItem == null) { return; throw new Exception($"Can not be null"); }
+
+            updateItem.Name = categoryUpdate.Name;
+            updateItem.ModifiedBy = "admin";
+            updateItem.ModifiedDate = DateTime.Now;
+            // Create slug
+            string slug = categoryUpdate.Name.ToLower();
+            var test = Regex.Replace(slug, @"\s", "-", RegexOptions.Compiled);
+            updateItem.Slug = test;
+        }
+        public void DeleteCategoryById(int id)
+        {
+            CategoryData.Models.Remove(CategoryData.Models.First(note => note.Id == id));
+        }
+        public void AssignCategory(int newCategory, int newsId)
+        {
+            var newsToChange = NewsItemsData.Models.First(c => c.Id == newsId);
+            if (newsToChange == null) { return; throw new Exception($"Can not be null"); }
+
+            newsToChange.CategoryId = newCategory;
+        }
+        public int CreateAuthor(AuthorInputModel newAuthor)
+        {
+            var authorToAdd = new Author();
+            var nextId = AuthorData.Models.Count() + 1;
+            authorToAdd.Id = nextId;
+            authorToAdd.Name = newAuthor.Name;
+            authorToAdd.ProfileImgSource = newAuthor.ProfileImgSource;
+            authorToAdd.Bio = newAuthor.Bio;
+            AuthorData.Models.Add(authorToAdd);
+            return nextId;
+        }
+        public void UpdateAuthor(AuthorInputModel updateAuthor, int id)
+        {
+            var authorToUpdate = AuthorData.Models.First(c => c.Id == id);
+            if (authorToUpdate == null) { return; throw new Exception($"Can not be null"); }
+
+            authorToUpdate.Name = updateAuthor.Name;
+            authorToUpdate.ProfileImgSource = updateAuthor.ProfileImgSource;
+            authorToUpdate.Bio = updateAuthor.Bio;
+        }
+        public void DeleteAuthor(int id)
+        {
+            AuthorData.Models.Remove(AuthorData.Models.First(n => n.Id == id));
+        }
+        public void AssignAuthor(int newAuthorId, int newsId)
+        {
+            var newsToChange = NewsItemsData.Models.First(c => c.Id == newsId);
+            if (newsToChange == null) { return; throw new Exception($"Can not be null"); }
+
+            newsToChange.AuthorId = newAuthorId;
         }
     }
 }

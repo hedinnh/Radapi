@@ -1,3 +1,18 @@
+// add new item
+
+
+// valid json for adding item
+{
+    "title": "jeeeenni jenn",
+    "imgSource": "http://dummyimage.com/149x192.png/dddddd/000000",
+    "shortDescription": "Driver off-road veh injured",
+    "longDescription": "Driver of special all-terrain or other off-road motor vehicle injured in traffic accident",
+    "publishDate": "2008-09-22T14:30:00",
+    "authorId": "1",
+    "categoryId": "1"
+    }
+
+
 
 // valid json for editing/updating item
 {
@@ -18,7 +33,7 @@
 // add author:
 
 {
-    "name":"Jenni penni",
+    "name":"Jenni2 penni2",
     "profileImgSource":"lol.com",
     "bio":"crappy bio"
 
