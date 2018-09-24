@@ -33,6 +33,12 @@ namespace RadApi.Models.Extensions
             Name = item.Name,
             Slug = item.Slug
         }).ToList();
+        public static List<CategoryDetailDto> CategoryToDetails(this List<Category> list) => list.Select(item => new CategoryDetailDto
+        {
+            Id = item.Id,
+            Name = item.Name,
+            Slug = item.Slug
+        }).ToList();
         public static List<AuthorDto> AuthorToLightWeight(this List<Author> list) => list.Select(item => new AuthorDto
         {
             Id = item.Id,

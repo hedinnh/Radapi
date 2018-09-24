@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Authorization;
 using RadApi.Models.InputModels;
 using System.Text.RegularExpressions;
+using System.Dynamic;
+using Newtonsoft.Json;
 
 namespace RadApi.WebApi.Controllers
 {
@@ -21,28 +23,17 @@ namespace RadApi.WebApi.Controllers
     [ApiController]
     public class NewsController : ControllerBase
     {
+
         private string secretKey = "123";
-        private NewsService _newsService = new NewsService();
+        private readonly NewsService _newsService = new NewsService();
 
         [HttpGet]
         public IActionResult GetAllNews(int pageNumber = 1, int pageSize = 25)
         {
             var envelope = new Envelope<NewsItemDto>();
-            double count = 0;
-            // var result = _newsService.GetAllNews(); // skoda ad nota service seinna !!!
-            var temp = new List<NewsItemDto>();
-            var sorted = NewsItemsData.Models.OrderBy(p => p.PublishDate).ToList(); // Sort news items by date
-            sorted.ToLightWeight().ForEach(c =>
-            {
-                c.Links.AddReference("self", new { href = $"api/{c.Id}" });
-                c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
-                c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
-                c.Links.AddReference("authors", new [] { new {href = $"api/{c.Id}"} });
-                temp.Add(c);
-                count++;
-            });
-            
-            IEnumerable result = temp.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            var news = _newsService.GetAllNews();
+            double count = news.Count();
+            IEnumerable result = news.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             envelope.Items = result.Cast<NewsItemDto>();
             envelope.PageNumber = pageNumber;
             envelope.PageSize = pageSize;
@@ -54,104 +45,32 @@ namespace RadApi.WebApi.Controllers
         [Route("{id:int}")]
         public IActionResult GetNewsById(int id)
         {
-            var result = new List<NewsItemDetailDto>();
-            NewsItemsData.Models.ToDetails().ForEach(c =>
-            {
-                if (c.Id == id)
-                {
-                    c.Links.AddReference("self", new { href = $"api/{c.Id}" });
-                    c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
-                    c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
-                    result.Add(c);
-                }
-            });
-            return Ok(result);
+            return Ok(_newsService.GetNewsById(id));
         }
         [HttpGet]
         [Route("/api/categories")]
         public IActionResult GetAllCategories()
         {
-            var temp = new List<CategoryDto>();
-            var categories = CategoryData.Models;
-            categories.CategoryToLightWeight().ForEach(c =>
-            {
-                c.Links.AddReference("self", new { href = $"api/categories/{c.Id}" });
-                c.Links.AddReference("edit", new { href = $"api/categories/{c.Id}" });
-                c.Links.AddReference("delete", new { href = $"api/categories/{c.Id}" });
-                temp.Add(c);
-            });
-
-            return Ok(temp);
+            return Ok(_newsService.GetAllCategories());
         }
         [HttpGet]
         [Route("/api/categories/{id:int}")]
         public IActionResult GetCategoryById(int id)
         {
-            var temp = new List<CategoryDto>();
-            var categories = CategoryData.Models;
-            var count = 0;
-            foreach (var item in NewsItemsData.Models)
-            {
-                if (item.CategoryId == id)
-                {
-                    count++;
-                }
-            }
-            categories.CategoryToLightWeight().ForEach(c =>
-            {
-                if (c.Id == id)
-                {
-                    c.Links.AddReference("self", new { href = $"api/categories/{c.Id}" });
-                    c.Links.AddReference("edit", new { href = $"api/categories/{c.Id}" });
-                    c.Links.AddReference("delete", new { href = $"api/categories/{c.Id}" });
-                    c.Links.AddReference("numberOfNewsItems", $"{count}");
-                    c.Links.AddReference("parentCateoryId", $"{c.Id - 1}");
-                    temp.Add(c);
-                }
-            });
-            return Ok(temp);
+            return Ok(_newsService.GetCategoryById(id));
         }
 
         [HttpGet]
         [Route("/api/authors/")]
         public IActionResult GetAllAuthors()
         {
-            var temp = new List<AuthorDto>();
-            var authors = AuthorData.Models;
-
-            authors.AuthorToLightWeight().ForEach(c =>
-            {
-                c.Links.AddReference("self", new { href = $"api/authors/{c.Id}" });
-                c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
-                c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
-                c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
-                // c.Links.AddReference("newsItemsDetailed", $"api/authors/{c.Id}");
-                temp.Add(c);
-            }
-            );
-            return Ok(temp);
+            return Ok(_newsService.GetAllAuthors());
         }
         [HttpGet]
         [Route("/api/authors/{id:int}")]
         public IActionResult GetAuthorById(int id)
         {
-            var temp = new List<AuthorDetailDto>();
-            var authors = AuthorData.Models;
-
-            authors.AuthorToDetails().ForEach(c =>
-            {
-                if (c.Id == id)
-                {
-                    c.Links.AddReference("self", new { href = $"api/authors/{c.Id}" });
-                    c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
-                    c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
-                    c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
-                    // c.Links.AddReference("newsItemsDetailed", $"api/authors/{c.Id}");
-                    temp.Add(c);
-                }
-            }
-            );
-            return Ok(temp);
+            return Ok(_newsService.GetAuthorById(id));
         }
         [HttpGet]
         [Route("/api/authors/{id:int}/newsItems")]
@@ -310,18 +229,81 @@ namespace RadApi.WebApi.Controllers
             return Ok();
         }
 
-        // fix , all items can have multiple categories
-        [HttpPatch("{id:int}")]
-        [Route("/api/categories/{catId:int}/newsItems/{id:int}")]
-        public IActionResult ChangeCategory(int newCategory, int id)
+        [HttpPatch]
+        [Route("/api/categories/newsItems/")]
+        public IActionResult ChangeCategory(int newCategory, int NewsId)
+        {
+            // This part is a bit strange. If you add a new newsitem it has no category at first.
+            // so how can you go to /api/categories/{categoryId}/newsItems/{newsItemId} when {categoryId} does not yet exist for the newsitem you are trying to access?
+            // We implemented this so that you go to /api/categories/newsItems and send in queryparameters for the news item and the category you want to link
+            // Same goes for the authorid (last function in this file)
+            string authHeader = Request.Headers["Authorization"];
+            if (secretKey != authHeader)
+            {
+                return Unauthorized();
+            };
+            var newsToChange = NewsItemsData.Models.First(c => c.Id == NewsId);
+            newsToChange.CategoryId = NewsId;
+            return Ok();
+        }
+        [HttpPost]
+        [Route("/api/authors/")]
+        public IActionResult CreateAuthor(AuthorInputModel newAuthor)
         {
             string authHeader = Request.Headers["Authorization"];
             if (secretKey != authHeader)
             {
                 return Unauthorized();
             };
-            var newsToChange = NewsItemsData.Models.First(c => c.Id == id);
-            newsToChange.CategoryId = id;
+            var authorToAdd = new Author();
+
+            authorToAdd.Id = AuthorData.Models.Count() + 1;
+            authorToAdd.Name = newAuthor.Name;
+            authorToAdd.ProfileImgSource = newAuthor.ProfileImgSource;
+            authorToAdd.Bio = newAuthor.Bio;
+
+            AuthorData.Models.Add(authorToAdd);
+            return Ok();
+        }
+        [HttpPatch]
+        [Route("/api/authors/{id:int}/")]
+        public IActionResult UpdateAuthor(AuthorInputModel updateAuthor, int id)
+        {
+            string authHeader = Request.Headers["Authorization"];
+            if (secretKey != authHeader)
+            {
+                return Unauthorized();
+            };
+            var authorToUpdate = AuthorData.Models.First(c => c.Id == id);
+            authorToUpdate.Name = updateAuthor.Name;
+            authorToUpdate.ProfileImgSource = updateAuthor.ProfileImgSource;
+            authorToUpdate.Bio = updateAuthor.Bio;
+
+            return Ok();
+        }
+        [HttpDelete]
+        [Route("/api/authors/{id:int}")]
+        public IActionResult DeleteAuthor(int id)
+        {
+            string authHeader = Request.Headers["Authorization"];
+            if (secretKey != authHeader)
+            {
+                return Unauthorized();
+            };
+            AuthorData.Models.Remove(AuthorData.Models.First(note => note.Id == id));
+            return Ok();
+        }
+        [HttpPatch]
+        [Route("/api/categories/newsItems/")]
+        public IActionResult ChangeAuthor(int newAuthorId, int NewsId)
+        {
+            string authHeader = Request.Headers["Authorization"];
+            if (secretKey != authHeader)
+            {
+                return Unauthorized();
+            };
+            var NewsToChange = NewsItemsData.Models.First(c => c.Id == NewsId);
+            NewsToChange.AuthorId = newAuthorId;
             return Ok();
         }
     }

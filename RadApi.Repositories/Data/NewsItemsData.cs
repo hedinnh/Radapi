@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using RadApi.Models.Entities;
 
-namespace RadApi.Repositories
+namespace RadApi.Repositories.Data
 {
     public class NewsItemsData
     {

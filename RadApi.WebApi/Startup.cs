@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RadApi.Models.Dtos;
+using RadApi.Models.Entities;
+using RadApi.Models.InputModels;
 
 namespace RadApi.WebApi
 {
@@ -20,7 +23,8 @@ namespace RadApi.WebApi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+
+                public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -42,6 +46,15 @@ namespace RadApi.WebApi
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            AutoMapper.Mapper.Initialize(cfg =>{
+                cfg.CreateMap<NewsItem, NewsItemDto>();
+                cfg.CreateMap<NewsItemDto, NewsItem>();
+                cfg.CreateMap<NewsItemInputModel, NewsItem>()
+                .ForMember(m => m.PublishDate, opt => opt.UseValue(DateTime.Now))
+                .ForMember(m => m.ModifiedBy, opt => opt.UseValue(DateTime.Now))
+                .ForMember(m => m.ModifiedBy, opt => opt.UseValue("admin"));
+                 
+            });
         }
     }
 }
