@@ -117,7 +117,7 @@ namespace RadApi.Repositories
         public IEnumerable<NewsItemDto> GetNewsByAuthorId(int id)
         {
             var tempNews = new List<NewsItem>();
-            news.ForEach(c =>
+            NewsItemsData.Models.ForEach(c =>
             {
                 if (c.AuthorId == id)
                 {
