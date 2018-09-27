@@ -149,13 +149,9 @@ namespace RadApi.WebApi.Controllers
         }
 
         [HttpPatch]
-        [Route("/api/categories/newsItems/")]
+        [Route("/api/categories/{newCategory:int}/newsItems/{newsId:int}")]
         public IActionResult AssignCategory(int newCategory, int newsId)
         {
-            // This part is a bit strange. If you add a new newsitem it has no category at first.
-            // so how can you go to /api/categories/{categoryId}/newsItems/{newsItemId} when {categoryId} does not yet exist for the newsitem you are trying to access?
-            // We implemented this so that you go to /api/categories/newsItems and send in queryparameters for the news item and the category you want to link
-            // Same goes for the authorId (last function in this file)
             string authHeader = Request.Headers["Authorization"];
             if (secretKey != authHeader) { return Unauthorized(); };
             if (!CategoryData.Models.Any(n => n.Id == newCategory)) { return StatusCode(404, $"id: {newCategory} can not add to a non existing category, please create it first"); }
@@ -198,7 +194,7 @@ namespace RadApi.WebApi.Controllers
             return NoContent();
         }
         [HttpPatch]
-        [Route("/api/authors/newsItems/")]
+        [Route("/api/authors/{newAuthorId:int}/newsItems/{newsId:int}")]
         public IActionResult AssignAuthor(int newAuthorId, int newsId)
         {
             string authHeader = Request.Headers["Authorization"];

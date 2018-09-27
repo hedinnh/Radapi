@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using AutoMapper;
+using Newtonsoft.Json.Linq;
 using RadApi.Models.Dtos;
 using RadApi.Models.Entities;
 using RadApi.Models.Extensions;
@@ -24,8 +25,21 @@ namespace RadApi.Repositories
                 c.Links.AddReference("self", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
-                c.Links.AddReference("authors", new[] { new { href = $"api/authors/{c.Id}" } });
-                c.Links.AddReference("categories", new[] { new { href = $"api/categories/{c.Id}" } });
+
+                NewsItemsData.Models.ForEach(j =>
+                {
+                    if (c.Id == j.Id)
+                    {
+                        c.Links.AddReference("authors", new[] { new { href = $"api/authors/{j.AuthorId}" } });
+                    }
+                });
+                NewsItemsData.Models.ForEach(j =>
+                {
+                    if (c.Id == j.Id)
+                    {
+                        c.Links.AddReference("categories", new[] { new { href = $"api/categories/{j.CategoryId}" } });
+                    }
+                });
                 temp.Add(c);
             });
             return (temp);
@@ -40,8 +54,20 @@ namespace RadApi.Repositories
                     c.Links.AddReference("self", new { href = $"api/{c.Id}" });
                     c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
                     c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
-                    c.Links.AddReference("authors", new[] { new { href = $"api/authors/{c.Id}" } });
-                    c.Links.AddReference("categories", new[] { new { href = $"api/categories/{c.Id}" } });
+                    NewsItemsData.Models.ForEach(j =>
+                    {
+                        if (c.Id == j.Id)
+                        {
+                            c.Links.AddReference("authors", new[] { new { href = $"api/authors/{j.AuthorId}" } });
+                        }
+                    });
+                    NewsItemsData.Models.ForEach(j =>
+                    {
+                        if (c.Id == j.Id)
+                        {
+                            c.Links.AddReference("categories", new[] { new { href = $"api/categories/{j.CategoryId}" } });
+                        }
+                    });
                     result.Add(c);
                 }
             });
@@ -86,6 +112,7 @@ namespace RadApi.Repositories
         }
         public IEnumerable GetAllAuthors()
         {
+            var newsList = new List<JObject>();
             var temp = new List<AuthorDto>();
             AuthorData.Models.AuthorToLightWeight().ForEach(c =>
             {
@@ -93,6 +120,17 @@ namespace RadApi.Repositories
                 c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
                 c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
                 c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
+
+                NewsItemsData.Models.ForEach(j =>
+                {
+                    if (c.Id == j.AuthorId)
+                    {
+                        var jsonObject = new JObject();
+                        jsonObject.Add("href", $"api/{j.Id}");
+                        newsList.Add(jsonObject);
+                    }
+                });
+                c.Links.AddReference("newsItemsDetailed", newsList);
                 temp.Add(c);
             }
             );
@@ -109,6 +147,19 @@ namespace RadApi.Repositories
                     c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
                     c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
                     c.Links.AddReference("newsItems", new { href = $"api/authors/{c.Id}/newsItems" });
+                    var newsList = new List<JObject>();
+
+                    NewsItemsData.Models.ForEach(j =>
+                    {
+                        if (c.Id == j.AuthorId)
+                        {
+                            var jsonObject = new JObject();
+                            jsonObject.Add("href", $"api/{j.Id}");
+                            newsList.Add(jsonObject);
+                        }
+                    });
+
+                    c.Links.AddReference("newsItemsDetailed", newsList);
                     temp.Add(c);
                 }
             }
@@ -130,7 +181,20 @@ namespace RadApi.Repositories
                 c.Links.AddReference("self", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("edit", new { href = $"api/{c.Id}" });
                 c.Links.AddReference("delete", new { href = $"api/{c.Id}" });
-                c.Links.AddReference("authors", new { href = $"api/authors/{id}" });
+                NewsItemsData.Models.ForEach(j =>
+                {
+                    if (c.Id == j.Id)
+                    {
+                        c.Links.AddReference("authors", new[] { new { href = $"api/authors/{j.AuthorId}" } });
+                    }
+                });
+                NewsItemsData.Models.ForEach(j =>
+                {
+                    if (c.Id == j.Id)
+                    {
+                        c.Links.AddReference("categories", new[] { new { href = $"api/categories/{j.CategoryId}" } });
+                    }
+                });
                 temp.Add(c);
             }
             );
