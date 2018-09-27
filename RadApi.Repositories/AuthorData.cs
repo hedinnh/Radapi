@@ -29,6 +29,13 @@ namespace RadApi.Repositories
                 Name = "Garthar Vader",
                 ProfileImgSource = "https://api.adorable.io/avatars/285/aboatt@adowrable.io.png",
                 Bio = "My name is gardens and i will water your flower for free wrarrrr"
+            },
+            new Author
+            {
+                Id = 4,
+                Name = "2234234234234Garthar Vader",
+                ProfileImgSource = "https://api.adorable.io/avatars/285/aboatt@adowrable.io.png",
+                Bio = "234234234234My name is gardens and i will water your flower for free wrarrrr"
             }
         };
         public static List<Author> Models { get => _models; set => _models = value; }

@@ -16,7 +16,7 @@ namespace RadApi.Repositories
                 ShortDescription = "Driver off-road veh injured",
                 LongDescription = "Driver of special all-terrain or other off-road motor vehicle injured in traffic accident",
                 PublishDate = new DateTime(2008, 9, 22, 14, 30, 0),
-                AuthorId = 1,
+                AuthorId = 4,
                 CategoryId = 1
             },
             new NewsItem

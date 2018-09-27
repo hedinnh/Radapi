@@ -22,10 +22,6 @@ namespace RadApi.Models.Extensions
             ShortDescription = item.ShortDescription,
             LongDescription = item.LongDescription,
             PublishDate = item.PublishDate
-            // Rarity = item.Rarity,
-            // DifficultyLevel = language == "en-US" ? item.DifficultyLevel : item.DifficultyLevelDE,
-            // YearOfRelease = item.YearOfRelease,
-            // ImageUrl = item.ImageUrl
         }).ToList();
         public static List<CategoryDto> CategoryToLightWeight(this List<Category> list) => list.Select(item => new CategoryDto
         {

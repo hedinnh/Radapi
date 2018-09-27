@@ -9,7 +9,7 @@ using RadApi.Models.Dtos;
 using RadApi.Models.Entities;
 using RadApi.Models.Extensions;
 using RadApi.Models.InputModels;
-using RadApi.Repositories.Data;
+using RadApi.Repositories;
 
 namespace RadApi.Repositories
 {
@@ -112,10 +112,10 @@ namespace RadApi.Repositories
         }
         public IEnumerable GetAllAuthors()
         {
-            var newsList = new List<JObject>();
             var temp = new List<AuthorDto>();
             AuthorData.Models.AuthorToLightWeight().ForEach(c =>
             {
+                var newsList = new List<JObject>();
                 c.Links.AddReference("self", new { href = $"api/authors/{c.Id}" });
                 c.Links.AddReference("edit", new { href = $"api/authors/{c.Id}" });
                 c.Links.AddReference("delete", new { href = $"api/authors/{c.Id}" });
